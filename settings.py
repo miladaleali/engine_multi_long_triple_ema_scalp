@@ -16,7 +16,7 @@ settings = EngineSettings(
         'okx': 'pedesis.components.broker.templates.okx',
     },
     installed_srls=[
-        'multi_long_triple_ema_scalp.srls.williams'
+        'pedesis.components.srl_calculator.calculators.williams_fractal'
     ],
     srl_timeframes=[
         '5m',

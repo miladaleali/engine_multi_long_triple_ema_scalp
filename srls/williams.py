@@ -14,7 +14,7 @@ data_settings = DataSettings(start_time=_START_TIME)
 
 CONFIGS = {
     '5m': CTSettings(
-        timeframe='5m', 
+        timeframe='5m',
         srlevel_std_multiplier=1.05,
         data_settings=data_settings,
         first_std_srl=0.02,
@@ -112,6 +112,7 @@ CONFIGS = {
     ),
 }
 
+
 # NOTE: this func must be named calculate.
 def calculate(df: pd.DataFrame, setting: CTSettings) -> pd.DataFrame:
     """Indicate bearish and bullish fractal patterns using shifted Series.
@@ -121,7 +122,8 @@ def calculate(df: pd.DataFrame, setting: CTSettings) -> pd.DataFrame:
     :return: pd.DataFrame (bearish, bullish) where True marks a fractal pattern
     """
     period = setting.other['period']
-    periods = [p for p in range(-period, period + 1) if p != 0]  # default [-2, -1, 1, 2]
+    # default [-2, -1, 1, 2]
+    periods = [p for p in range(-period, period + 1) if p != 0]
 
     highs = [df['high'] > df['high'].shift(p) for p in periods]
     bears = pd.Series(np.logical_and.reduce(highs), index=df.index)

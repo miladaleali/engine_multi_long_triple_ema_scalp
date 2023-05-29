@@ -4,9 +4,9 @@ from pedesis.components.signal_engine import models
 from pedesis.conf.global_settings import EngineSettings
 
 settings = EngineSettings(
-    name='scalp',
+    name='multi_long_triple_ema_scalp',
     run_mode='live',
-    folder_name='scalp',
+    folder_name='multi_long_triple_ema_scalp',
     mode=models.EngineMode.Scalp,
     native_broker='pedesis.components.broker.templates.okx',
     market=models.DataType.Future,
@@ -16,7 +16,7 @@ settings = EngineSettings(
         'okx': 'pedesis.components.broker.templates.okx',
     },
     installed_srls=[
-        'scalp.srls.williams'
+        'multi_long_triple_ema_scalp.srls.williams'
     ],
     srl_timeframes=[
         '5m',
@@ -34,5 +34,7 @@ settings = EngineSettings(
     ],
     installed_symbols=[
         'BTCUSDT',
+        'ETHUSDT',
+        'DOGEUSDT'
     ]
 )
